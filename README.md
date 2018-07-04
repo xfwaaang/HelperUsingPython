@@ -59,14 +59,18 @@ the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--wate
 ```
 
 <table><tr>
+<td>
 <center>
 <img src="/files/文字水印.png" width="50%"/>
 文字水印
 </center>
+</td>
+<td>
 <center>
 <img src="/files/文字水印PDF.png" width="50%"/>
 添加文字水印的PDF
 </center>
+</td>
 </tr></table>
 
 ### ToDo
