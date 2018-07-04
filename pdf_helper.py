@@ -171,7 +171,7 @@ class PDFHelper(object):
 		path: the absolute path of the pdf to be added watermark
 		"""
 		mark_pdf = os.path.join(os.path.split(path)[0], 'water_mark-' + str(int(time.time())) + '.pdf')                                                                               
-		c = canvas.Canvas(mark_pdf, pagesize = (20*cm, 20*cm))
+		c = canvas.Canvas(mark_pdf, pagesize = (30*cm, 30*cm))
 		c.setFillAlpha(0.4) #设置透明度
 		c.rotate(25)
 		c.translate(5*cm, 5*cm)

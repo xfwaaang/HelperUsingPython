@@ -58,7 +58,7 @@ the watermark is saved as E:\WorkSpace\HelperUsingPython\test\water_mark-1530712
 the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--watermarked-1530712160.pdf
 ```
 
-<table><tr>
+<table align="center" border="0"><tr>
 <td>
 <img src="/files/文字水印.png" width="50%"/>
 </td>
@@ -66,6 +66,24 @@ the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--wate
 <img src="/files/文字水印PDF.png" width="50%"/>
 </td>
 </tr></table>
+
+- 添加图片水印
+
+```
+PS E:\WorkSpace\HelperUsingPython> python pdf_helper.py mark_image E:\WorkSpace\HelperUsingPython\test\IDN_XD.pdf E:\Wor
+kSpace\HelperUsingPython\test\test.png
+the watermark is saved as E:\WorkSpace\HelperUsingPython\test\water_mark-1530714771.pdf
+the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--watermarked-1530714772.pdf
+```
+<table align="center" border="0"><tr>
+<td>
+<img src="/files/图片水印.png" width="50%"/>
+</td>
+<td>
+<img src="/files/图片水印PDF.png" width="50%"/>
+</td>
+</tr></table>
+
 
 ### ToDo
 - [x] 批量重命名文件
