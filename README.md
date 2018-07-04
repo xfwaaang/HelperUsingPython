@@ -22,6 +22,10 @@ E:\WorkSpace\test\vv.txt -> E:\WorkSpace\test\第9章.txt
 - [x] 批量重命名文件
 - [ ] 批量下载百度图片 
 - [ ] 批量下载视频
-- [ ] pdf操作--拼接 水印 加密解密
-- [ ] word文档操作
+- [ ] PDF操作
+    - [x] 拼接
+    - [ ] 加水印，去水印
+    - [ ] 转Word或文本
+    - [ ] 英文->中文
+- [ ] word文档操作--转PDF或文本
 - [ ] Excel表格操作
