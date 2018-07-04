@@ -58,11 +58,16 @@ the watermark is saved as E:\WorkSpace\HelperUsingPython\test\water_mark-1530712
 the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--watermarked-1530712160.pdf
 ```
 
-![文字水印](/files/文字水印.png)
+<table><tr>
 <center>
-<img src="/files/文字水印PDF.png" width="25%" height="25%" />
+<img src="/files/文字水印.png" width="50%"/>
+文字水印
+</center>
+<center>
+<img src="/files/文字水印PDF.png" width="50%"/>
 添加文字水印的PDF
 </center>
+</tr></table>
 
 ### ToDo
 - [x] 批量重命名文件
