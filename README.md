@@ -23,7 +23,7 @@ E:\WorkSpace\test\vv.txt -> E:\WorkSpace\test\第9章.txt
 - [ ] 批量下载百度图片 
 - [ ] 批量下载视频
 - [ ] PDF操作
-    - [x] 拼接
+    - [x] 拼接，分割
     - [ ] 加水印，去水印
     - [ ] 转Word或文本
     - [ ] 英文->中文
