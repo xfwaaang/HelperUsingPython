@@ -81,7 +81,7 @@ class PDFHelper(object):
 		index_list.append(page_num-1)
 		start = 0
 
-		print('spliting pdf ' + pdf_path)
+		print('spliting pdf ' + pdf_path + ' to ' + str(len(index_list)) + ' parts')
 
 		for index in index_list:
 			index = int(index)
