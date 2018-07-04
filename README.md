@@ -59,7 +59,10 @@ the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--wate
 ```
 
 ![文字水印](/files/文字水印.png)
-![添加过文字水印的PDF](/files/文字水印PDF.png)
+<center>
+<img src="/files/文字水印PDF.png" width="25%" height="25%" />
+添加文字水印的PDF
+</center>
 
 ### ToDo
 - [x] 批量重命名文件
