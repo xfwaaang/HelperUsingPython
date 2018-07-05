@@ -33,7 +33,7 @@ def batch_rename_file(path):
 	pass
 
 
-batch_rename_file(sys.argv[1])
+# batch_rename_file(sys.argv[1])
 
 # path = r'E:\WorkSpace\HelperUsingPython\test'
 # batch_rename_file(path)

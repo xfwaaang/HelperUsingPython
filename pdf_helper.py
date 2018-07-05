@@ -7,6 +7,15 @@
 from PyPDF2 import PdfFileReader, PdfFileWriter, PdfFileMerger
 from reportlab.pdfgen import canvas 
 from reportlab.lib.units import cm 
+from pdfminer.pdfparser import PDFParser, PDFDocument
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter,process_pdf
+from pdfminer.layout import LAParams
+from pdfminer.converter import PDFPageAggregator
+from pdfminer.pdfinterp import PDFTextExtractionNotAllowed
+from pdfminer.converter import TextConverter
+from pdfminer.layout import LAParams
+from docx import Document
+from io import StringIO
 import os
 import sys
 import time
@@ -142,6 +151,21 @@ class PDFHelper(object):
 		c.save()
 		return mark_pdf
 
+	def create_image_mark(image, path):
+		"""
+		create image watermark and save it to the directory of the pdf to be added watermark
+		image: the image of watermark
+		path: the absolute path of the pdf to be added watermark
+		"""
+		mark_pdf = os.path.join(os.path.split(path)[0], 'water_mark-' + str(int(time.time())) + '.pdf')                                                                               
+		c = canvas.Canvas(mark_pdf, pagesize = (30*cm, 30*cm))
+		c.setFillAlpha(0.4) #设置透明度
+		c.rotate(25)
+		c.translate(5*cm, 5*cm)
+		c.drawImage(image, 7*cm, 7*cm, 6*cm, 6*cm)    #这里的单位是物理尺寸
+		c.save()
+		return mark_pdf
+
 	def add_mark(pdf, mark_pdf):
 		"""
 		add watermark
@@ -164,37 +188,106 @@ class PDFHelper(object):
 		print('the watermarked pdf is saved as ' + str(out_file))
 		pass
 
-	def create_image_mark(image, path):
+	def read_pdf(pdf):
 		"""
-		create image watermark and save it to the directory of the pdf to be added watermark
-		image: the image of watermark
-		path: the absolute path of the pdf to be added watermark
+		read PDF file
 		"""
-		mark_pdf = os.path.join(os.path.split(path)[0], 'water_mark-' + str(int(time.time())) + '.pdf')                                                                               
-		c = canvas.Canvas(mark_pdf, pagesize = (30*cm, 30*cm))
-		c.setFillAlpha(0.4) #设置透明度
-		c.rotate(25)
-		c.translate(5*cm, 5*cm)
-		c.drawImage(image, 7*cm, 7*cm, 6*cm, 6*cm)    #这里的单位是物理尺寸
-		c.save()
-		return mark_pdf
+		rsrcmgr = PDFResourceManager()
+		retstr = StringIO()
+		laparams = LAParams()
+		device = TextConverter(rsrcmgr, retstr, laparams=laparams)
 
-key = sys.argv[1]
-if key == 'merge':
-	PDFHelper.merge(sys.argv[2:])
-elif key == 'merge_all':
-	PDFHelper.merge_all(sys.argv[2])
-elif key == 'split':
-	PDFHelper.split(sys.argv[2], sys.argv[3:])
-elif key == 'mark_word':
-	mark_pdf = PDFHelper.create_word_mark(sys.argv[3], sys.argv[2])
-	print('the watermark is saved as ' + str(mark_pdf))
-	PDFHelper.add_mark(sys.argv[2], mark_pdf)
-elif key == 'mark_image':
-	mark_pdf = PDFHelper.create_image_mark(sys.argv[3], sys.argv[2])
-	print('the watermark is saved as ' + str(mark_pdf))
-	PDFHelper.add_mark(sys.argv[2], mark_pdf)
-else:
-	print('input error!!!')
+		process_pdf(rsrcmgr, device, open(pdf, 'rb'))
+		device.close()
+
+		content = retstr.getvalue()
+		retstr.close()
+		return content
+
+	# def pdf_2_txt(pdf):
+	# 	#rb以二进制读模式打开本地pdf文件
+	# 	fn = open(pdf,'rb')
+	# 	#创建一个pdf文档分析器
+	# 	parser = PDFParser(fn)
+	# 	#创建一个PDF文档
+	# 	doc = PDFDocument()
+	# 	#连接分析器 与文档对象
+	# 	parser.set_document(doc)
+	# 	doc.set_parser(parser)
+	# 	# 提供初始化密码doc.initialize("lianxipython")
+	# 	# 如果没有密码 就创建一个空的字符串
+	# 	doc.initialize("")
+	# 	# 检测文档是否提供txt转换，不提供就忽略
+	# 	if not doc.is_extractable:
+	# 		raise PDFTextExtractionNotAllowed
+	# 	else:
+	# 		#创建PDf资源管理器
+	# 		resource = PDFResourceManager()
+	# 		#创建一个PDF参数分析器
+	# 		laparams = LAParams()
+	# 		#创建聚合器,用于读取文档的对象
+	# 		device = PDFPageAggregator(resource,laparams=laparams)
+	# 		#创建解释器，对文档编码，解释成Python能够识别的格式
+	# 		interpreter = PDFPageInterpreter(resource,device)
+	# 		# 循环遍历列表，每次处理一页的内容
+	# 		# doc.get_pages() 获取page列表
+	# 		for page in doc.get_pages():
+	# 			#利用解释器的process_page()方法解析读取单独页数
+	# 			interpreter.process_page(page)
+	# 			#使用聚合器get_result()方法获取内容
+	# 			layout = device.get_result()
+	# 			#这里layout是一个LTPage对象,里面存放着这个page解析出的各种对象
+	# 			for out in layout:
+	# 				#判断是否含有get_text()方法，获取我们想要的文字
+	# 				if hasattr(out,"get_text"):
+	#					# print(out.get_text())
+	# 					with open('test.txt','ab') as f:
+	# 						f.write((out.get_text()+'\n').encode('utf-8'))
+	# 	pass
+
+	def to_txt(pdf):
+		"""
+		convert pdf to txt
+		"""
+		pdf_dir = os.path.split(pdf)[0]
+		pdf_name = os.path.splitext(os.path.split(pdf)[1])[0]
+		print('reading pdf ' + str(pdf) + ' ...')
+		content = PDFHelper.read_pdf(pdf)
+		# print(content)
+		out_file = os.path.join(pdf_dir, pdf_name + '--txt-' + str(int(time.time())) + '.txt')
+		with open(out_file, 'wb') as file:
+			file.write(content.encode('utf-8'))
+
+		print('save pdf as txt ' + str(out_file))
+		pass
+
+	def to_word(pdf):
+		"""
+		convert pdf to word
+		"""
+
+		pass
+
+# key = sys.argv[1]
+# if key == 'merge':
+# 	PDFHelper.merge(sys.argv[2:])
+# elif key == 'merge_all':
+# 	PDFHelper.merge_all(sys.argv[2])
+# elif key == 'split':
+# 	PDFHelper.split(sys.argv[2], sys.argv[3:])
+# elif key == 'mark_word':
+# 	print('creating word watermark...')
+# 	mark_pdf = PDFHelper.create_word_mark(sys.argv[3], sys.argv[2])
+# 	print('the watermark is saved as ' + str(mark_pdf))
+# 	print('adding watermark...')
+# 	PDFHelper.add_mark(sys.argv[2], mark_pdf)
+# elif key == 'mark_image':
+# 	print('creating image watermark...')
+# 	mark_pdf = PDFHelper.create_image_mark(sys.argv[3], sys.argv[2])
+# 	print('the watermark is saved as ' + str(mark_pdf))
+# 	print('adding watermark...')
+# 	PDFHelper.add_mark(sys.argv[2], mark_pdf)
+# else:
+# 	print('input error!!!')
 	
 		

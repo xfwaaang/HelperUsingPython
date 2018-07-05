@@ -4,22 +4,22 @@
 - 批量重命名文件
 
 ```
-PS E:\WorkSpace> python batch_rename_file.py E:\WorkSpace\test
-E:\WorkSpace\test\3d.txt -> E:\WorkSpace\test\第1章.txt
-E:\WorkSpace\test\bb.txt -> E:\WorkSpace\test\第2章.txt
-E:\WorkSpace\test\ds.txt -> E:\WorkSpace\test\第3章.txt
-E:\WorkSpace\test\gd.txt -> E:\WorkSpace\test\第4章.txt
-E:\WorkSpace\test\gg.txt -> E:\WorkSpace\test\第5章.txt
-E:\WorkSpace\test\qw.txt -> E:\WorkSpace\test\第6章.txt
-E:\WorkSpace\test\rt.txt -> E:\WorkSpace\test\第7章.txt
-E:\WorkSpace\test\tt.txt -> E:\WorkSpace\test\第8章.txt
-E:\WorkSpace\test\vv.txt -> E:\WorkSpace\test\第9章.txt
+PS E:\WorkSpace\HelperUsingPython> python helper.py rename_files E:\WorkSpace\HelperUsingPython\test
+E:\WorkSpace\HelperUsingPython\test\3d.txt -> E:\WorkSpace\HelperUsingPython\test\第1章.txt
+E:\WorkSpace\HelperUsingPython\test\bb.txt -> E:\WorkSpace\HelperUsingPython\test\第2章.txt
+E:\WorkSpace\HelperUsingPython\test\ds.txt -> E:\WorkSpace\HelperUsingPython\test\第3章.txt
+E:\WorkSpace\HelperUsingPython\test\gd.txt -> E:\WorkSpace\HelperUsingPython\test\第4章.txt
+E:\WorkSpace\HelperUsingPython\test\gg.txt -> E:\WorkSpace\HelperUsingPython\test\第5章.txt
+E:\WorkSpace\HelperUsingPython\test\qw.txt -> E:\WorkSpace\HelperUsingPython\test\第6章.txt
+E:\WorkSpace\HelperUsingPython\test\rt.txt -> E:\WorkSpace\HelperUsingPython\test\第7章.txt
+E:\WorkSpace\HelperUsingPython\test\tt.txt -> E:\WorkSpace\HelperUsingPython\test\第8章.txt
+E:\WorkSpace\HelperUsingPython\test\vv.txt -> E:\WorkSpace\HelperUsingPython\test\第9章.txt
 ```
 
 - 拼接给定的PDF文件
     
 ```
-PS E:\WorkSpace\HelperUsingPython> python pdf_helper.py merge E:\WorkSpace\HelperUsingPython\test\test.pdf E:\WorkSpace\HelperUsingPython\test\test-1.pdf
+PS E:\WorkSpace\HelperUsingPython> python helper.py pdf_merge E:\WorkSpace\HelperUsingPython\test\test.pdf E:\WorkSpace\HelperUsingPython\test\test-1.pdf
 There are 2 pdfs to be merged
 merging E:\WorkSpace\HelperUsingPython\test\test.pdf
 merging E:\WorkSpace\HelperUsingPython\test\test-1.pdf
@@ -29,7 +29,7 @@ save the merged pdf to E:\WorkSpace\HelperUsingPython\test\merge-1530680353.pdf
 - 拼接给定目录下的所有PDF文件
 
 ```
-PS E:\WorkSpace\HelperUsingPython> python pdf_helper.py merge_all E:\WorkSpace\HelperUsingPython\test
+PS E:\WorkSpace\HelperUsingPython> python helper.py pdf_merge_all E:\WorkSpace\HelperUsingPython\test
 There are 5 pdfs to be merged
 merging E:\WorkSpace\HelperUsingPython\test\hhh.pdf
 merging E:\WorkSpace\HelperUsingPython\test\merge-1530680353.pdf
@@ -42,7 +42,7 @@ save the merged pdf to E:\WorkSpace\HelperUsingPython\test\merge-1530680513.pdf
 - 分割给定的PDF文件
 
 ```
-PS E:\WorkSpace\HelperUsingPython> python pdf_helper.py split E:\WorkSpace\HelperUsingPython\test\ggg.pdf 4 10 15
+PS E:\WorkSpace\HelperUsingPython> python helper.py pdf_split E:\WorkSpace\HelperUsingPython\test\ggg.pdf 4 10 15
 spliting pdf E:\WorkSpace\HelperUsingPython\test\ggg.pdf to 4 parts 
 save the splited pdf from page 0 to 4 to E:\WorkSpace\HelperUsingPython\test\ggg--0-4.pdf
 save the splited pdf from page 5 to 10 to E:\WorkSpace\HelperUsingPython\test\ggg--5-10.pdf
@@ -50,11 +50,13 @@ save the splited pdf from page 11 to 15 to E:\WorkSpace\HelperUsingPython\test\g
 save the splited pdf from page 16 to 20 to E:\WorkSpace\HelperUsingPython\test\ggg--16-20.pdf
 ```
 
-- 添加文字水印
+- 为PDF添加文字水印
 
 ```
-PS E:\WorkSpace\HelperUsingPython> python pdf_helper.py mark_word E:\WorkSpace\HelperUsingPython\test\IDN_XD.pdf 'hello world!'
+PS E:\WorkSpace\HelperUsingPython> python helper.py pdf_mark_word E:\WorkSpace\HelperUsingPython\test\IDN_XD.pdf 'hello world!'
+creating word watermark...
 the watermark is saved as E:\WorkSpace\HelperUsingPython\test\water_mark-1530712159.pdf
+adding watermark...
 the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--watermarked-1530712160.pdf
 ```
 
@@ -67,23 +69,31 @@ the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--wate
 </td>
 </tr></table>
 
-- 添加图片水印
+- 为PDF添加图片水印
 
 ```
-PS E:\WorkSpace\HelperUsingPython> python pdf_helper.py mark_image E:\WorkSpace\HelperUsingPython\test\IDN_XD.pdf E:\Wor
+PS E:\WorkSpace\HelperUsingPython> python helper.py pdf_mark_image E:\WorkSpace\HelperUsingPython\test\IDN_XD.pdf E:\Wor
 kSpace\HelperUsingPython\test\test.png
+creating word watermark...
 the watermark is saved as E:\WorkSpace\HelperUsingPython\test\water_mark-1530714771.pdf
+adding watermark...
 the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--watermarked-1530714772.pdf
 ```
-<table align="center" border="0"><tr>
-<td>
-<img src="/files/图片水印.png" width="50%"/>
-</td>
-<td>
-<img src="/files/图片水印PDF.png" width="50%"/>
-</td>
-</tr></table>
+<table align="center" border="0">
+<tr>
+<td><img src="/files/图片水印.png" width="50%"/></td>
+<td><img src="/files/图片水印PDF.png" width="50%"/></td>
+</tr>
+</table>
 
+- PDF转txt
+```
+PS E:\WorkSpace\HelperUsingPython> python helper.py pdf_2_txt E:\WorkSpace\HelperUsingPython\test\test.pdf
+reading pdf E:\WorkSpace\HelperUsingPython\test\test.pdf ...
+save pdf as txt E:\WorkSpace\HelperUsingPython\test\test--txt-1530763169.txt
+```
+
+- PDF转Word
 
 ### ToDo
 - [x] 批量重命名文件
