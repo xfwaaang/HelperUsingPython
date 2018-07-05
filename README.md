@@ -1,5 +1,5 @@
 # HelperUsingPython
-使用Python实现常用的工作助手
+使用Python实现常用的小工具
 
 - 批量重命名文件
 
@@ -102,6 +102,27 @@ save pdf as word E:\WorkSpace\HelperUsingPython\test\test--doc-1530778603.doc
 PS E:\WorkSpace\HelperUsingPython>
 ```
 
+- Word转PDF
+```
+PS E:\WorkSpace\HelperUsingPython> python helper.py word-2-pdf E:\WorkSpace\HelperUsingPython\test\test.doc
+converting word E:\WorkSpace\HelperUsingPython\test\test.doc to pdf...
+save word as pdf E:\WorkSpace\HelperUsingPython\test\test--pdf-1530799124.pdf
+```
+
+- Excel转PDF
+```
+PS E:\WorkSpace\HelperUsingPython> python helper.py excel-2-pdf E:\WorkSpace\HelperUsingPython\test\test.xlsx
+converting excel E:\WorkSpace\HelperUsingPython\test\test.xlsx to pdf...
+save excel as pdf E:\WorkSpace\HelperUsingPython\test\test--pdf-1530799238.pdf
+```
+
+- PPT转PDF
+```
+PS E:\WorkSpace\HelperUsingPython> python helper.py ppt-2-pdf E:\WorkSpace\HelperUsingPython\test\test.ppt
+converting ppt E:\WorkSpace\HelperUsingPython\test\test.ppt to pdf...
+save ppt as pdf E:\WorkSpace\HelperUsingPython\test\test--pdf-1530799286.pdf
+```
+
 ### ToDo
 - [x] [批量重命名文件](/batch_rename_file.py)
 - [ ] 批量下载百度图片 
@@ -110,5 +131,7 @@ PS E:\WorkSpace\HelperUsingPython>
     - [x] 拼接，分割
     - [x] 加水印
     - [x] 转Word或文本
-- [ ] Word文档操作--转PDF或文本
-- [ ] Excel表格操作
+- [x] [Office文档操作](/doc_helper.py)
+    - [x] Word转PDF
+    - [x] Excel转PDF
+    - [x] PPT转PDF

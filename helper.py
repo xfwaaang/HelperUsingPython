@@ -5,6 +5,7 @@
 # @email   : xfwangmm@gmail.com
 
 from pdf_helper import PDFHelper
+from doc_helper import DocHelper
 from batch_rename_file import batch_rename_file
 import sys
 
@@ -33,5 +34,13 @@ elif key == 'pdf-2-txt':
 	PDFHelper.to_txt(sys.argv[2])
 elif key == 'pdf-2-word':
 	PDFHelper.to_word(sys.argv[2])
+elif key == 'word-2-pdf':
+	DocHelper.word_2_pdf(sys.argv[2])
+elif key == 'excel-2-pdf':
+	DocHelper.excel_2_pdf(sys.argv[2])
+elif key == 'ppt-2-pdf':
+	DocHelper.ppt_2_pdf(sys.argv[2])
+elif key == 'extract-tables':
+	DocHelper.extract_tables(sys.argv[2])
 else:
 	print('input error!!!')
