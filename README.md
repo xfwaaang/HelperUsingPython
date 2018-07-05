@@ -53,7 +53,7 @@ save the splited pdf from page 16 to 20 to E:\WorkSpace\HelperUsingPython\test\g
 - 为PDF添加文字水印
 
 ```
-PS E:\WorkSpace\HelperUsingPython> python helper.py pdf_mark_word E:\WorkSpace\HelperUsingPython\test\IDN_XD.pdf 'hello world!'
+PS E:\WorkSpace\HelperUsingPython> python helper.py pdf-mark-word E:\WorkSpace\HelperUsingPython\test\IDN_XD.pdf 'hello world!'
 creating word watermark...
 the watermark is saved as E:\WorkSpace\HelperUsingPython\test\water_mark-1530712159.pdf
 adding watermark...
@@ -72,7 +72,7 @@ the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--wate
 - 为PDF添加图片水印
 
 ```
-PS E:\WorkSpace\HelperUsingPython> python helper.py pdf_mark_image E:\WorkSpace\HelperUsingPython\test\IDN_XD.pdf E:\Wor
+PS E:\WorkSpace\HelperUsingPython> python helper.py pdf-mark-image E:\WorkSpace\HelperUsingPython\test\IDN_XD.pdf E:\Wor
 kSpace\HelperUsingPython\test\test.png
 creating word watermark...
 the watermark is saved as E:\WorkSpace\HelperUsingPython\test\water_mark-1530714771.pdf
@@ -88,20 +88,27 @@ the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--wate
 
 - PDF转txt
 ```
-PS E:\WorkSpace\HelperUsingPython> python helper.py pdf_2_txt E:\WorkSpace\HelperUsingPython\test\test.pdf
+PS E:\WorkSpace\HelperUsingPython> python helper.py pdf-2-txt E:\WorkSpace\HelperUsingPython\test\test.pdf
 reading pdf E:\WorkSpace\HelperUsingPython\test\test.pdf ...
 save pdf as txt E:\WorkSpace\HelperUsingPython\test\test--txt-1530763169.txt
 ```
 
 - PDF转Word
+```
+PS E:\WorkSpace\HelperUsingPython> python helper.py pdf-2-word E:\WorkSpace\Help
+erUsingPython\test\test.pdf
+converting pdf E:\WorkSpace\HelperUsingPython\test\test.pdf to word ...
+save pdf as word E:\WorkSpace\HelperUsingPython\test\test--doc-1530778603.doc
+PS E:\WorkSpace\HelperUsingPython>
+```
 
 ### ToDo
-- [x] 批量重命名文件
+- [x] [批量重命名文件](/batch_rename_file.py)
 - [ ] 批量下载百度图片 
 - [ ] 批量下载视频
-- [ ] PDF操作
+- [x] [PDF操作](/pdf_helper.py)
     - [x] 拼接，分割
     - [x] 加水印
-    - [ ] 转Word或文本
+    - [x] 转Word或文本
 - [ ] Word文档操作--转PDF或文本
 - [ ] Excel表格操作

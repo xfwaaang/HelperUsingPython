@@ -19,6 +19,8 @@ from io import StringIO
 import os
 import sys
 import time
+import warnings
+warnings.filterwarnings("ignore")
 
 class PDFHelper(object):
 	""" helper to operate PDF """
@@ -265,7 +267,29 @@ class PDFHelper(object):
 		"""
 		convert pdf to word
 		"""
-
+		print('converting pdf ' + str(pdf) + ' to word ...')
+		pdf_dir = os.path.split(pdf)[0]
+		pdf_name = os.path.splitext(os.path.split(pdf)[1])[0]
+		fn = open(pdf,'rb')
+		parser = PDFParser(fn)
+		doc = PDFDocument()
+		parser.set_document(doc)
+		doc.set_parser(parser)
+		resource = PDFResourceManager()
+		laparams = LAParams()
+		device = PDFPageAggregator(resource,laparams=laparams)
+		interpreter = PDFPageInterpreter(resource,device)
+		out_file = os.path.join(pdf_dir, pdf_name + '--doc-' + str(int(time.time())) + '.doc')
+		document = Document()
+		for i in doc.get_pages():
+			interpreter.process_page(i)
+			layout = device.get_result()
+			for out in layout:
+				if hasattr(out,"get_text"):
+					content = out.get_text().replace(u'\xa0', u' ') 
+					document.add_paragraph(content, style='ListBullet')
+				document.save(out_file)
+		print('save pdf as word ' + str(out_file))
 		pass
 
 # key = sys.argv[1]
