@@ -123,6 +123,15 @@ converting ppt E:\WorkSpace\HelperUsingPython\test\test.ppt to pdf...
 save ppt as pdf E:\WorkSpace\HelperUsingPython\test\test--pdf-1530799286.pdf
 ```
 
+### 简化使用
+编写helper.cpp文件，在程序中调用cmd语句。将编译得到的helper.exe添加到环境变量，即可在任意目录下执行相关命令，处理结果保存至待处理文件所在目录。
+如**PPT转PDF**
+```
+C:\Users>helper ppt-2-pdf E:\WorkSpace\HelperUsingPython\test\test.ppt
+converting ppt E:\WorkSpace\HelperUsingPython\test\test.ppt to pdf...
+save ppt as pdf E:\WorkSpace\HelperUsingPython\test\test--pdf-1530865400.pdf
+```
+
 ### ToDo
 - [x] [批量重命名文件](/batch_rename_file.py)
 - [ ] 批量下载百度图片 
