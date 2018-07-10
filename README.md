@@ -165,8 +165,8 @@ User Manual:
 
 ### ToDo
 - [x] [批量重命名文件](/batch_rename_file.py)
-- [x] 批量下载图片 
-- [ ] 批量下载视频
+- [x] [批量下载图片](/dl_img.py) 
+- [x] [批量下载视频](/dl_video.py)
 - [x] [PDF操作](/pdf_helper.py)
     - [x] 拼接，分割
     - [x] 加水印

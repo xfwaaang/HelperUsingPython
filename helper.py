@@ -8,6 +8,7 @@ from pdf_helper import PDFHelper
 from doc_helper import DocHelper
 from batch_rename_file import batch_rename_file
 from dl_img import DLImg
+from dl_video import DLVideo
 import sys
 
 if len(sys.argv) < 2:
@@ -24,6 +25,7 @@ if len(sys.argv) < 2:
 	print('10. helper excel-2-pdf [excel-path...]|[directory-path]:\n    convert all the given excel(in the directory) to pdf')
 	print('11. helper ppt-2-pdf [ppt-path...]|[directory-path]:\n    convert all the gievn ppt(in the directory) to pdf')
 	print('12. helper dl-img [url]:\n    batch download images from https://pixabay.com/')
+	print('13. helper dl-video [url]:\n    batch download videos from v.qq.com')
 else:
 	key = sys.argv[1]
 	if key == 'rename-files':
@@ -61,6 +63,8 @@ else:
 		DocHelper.convert(sys.argv[2:], fun = DocHelper.ppt_2_pdf)
 	elif key == 'dl-img':
 		DLImg.dlImg(sys.argv[2])
+	elif key == 'dl-video':
+		DLVideo.dlVideos(sys.argv[2])
 	else:
 		print('Input error!!!')
 		print('Errors may occur if the file path contains spaces!!!')

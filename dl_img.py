@@ -7,8 +7,6 @@
 import urllib.request
 import urllib
 import re
-import os
-import time
 
 class DLImg(object):
 	"""docstring for DlImg"""
