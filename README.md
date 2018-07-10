@@ -161,6 +161,8 @@ User Manual:
     convert all the gievn ppt(in the directory) to pdf
 12. helper dl-img [url]:
     batch download images from https://pixabay.com/
+13. helper dl-video [url]:
+    batch download videos from v.qq.com
 ```
 
 ### ToDo
