@@ -72,7 +72,7 @@ the watermarked pdf is saved as E:\WorkSpace\HelperUsingPython\test\IDN_XD--wate
 - 为PDF添加图片水印
 
 ```
-PS E:\WorkSpace\HelperUsingPython> python helper.py pdf-mark-image E:\WorkSpace\HelperUsingPython\test\IDN_XD.pdf E:\Wor
+PS E:\WorkSpace\HelperUsingPython> python helper.py pdf-mark-img E:\WorkSpace\HelperUsingPython\test\IDN_XD.pdf E:\Wor
 kSpace\HelperUsingPython\test\test.png
 creating word watermark...
 the watermark is saved as E:\WorkSpace\HelperUsingPython\test\water_mark-1530714771.pdf
@@ -132,9 +132,40 @@ converting ppt E:\WorkSpace\HelperUsingPython\test\test.ppt to pdf...
 save ppt as pdf E:\WorkSpace\HelperUsingPython\test\test--pdf-1530865400.pdf
 ```
 
+### 使用手册
+命令行输入**helper**，查看命令提示
+```
+C:\Users>helper
+User Manual:
+ 1. helper rename-files [directory-path]:
+    rename all files in the given directory
+ 2. helper pdf-merge [pdf-path-1] [pdf-path-2] ... [pdf-path-n]:
+    merge the given pdfs
+ 3. helper pdf-merge-all [directory-path]:
+    merge all pdfs in the given directory
+ 4. helper pdf-split [pdf-path] [index-1] [index-2] ... [index-n]:
+    split the given pdf to specified parts(n+1)
+ 5. helper pdf-mark-word [pdf-path] [words]:
+    add word watermark to the given pdf
+ 6. helper pdf-mark-img [pdf-path] [image-path]:
+    add image watermark to the given pdf
+ 7. helper pdf-2-txt [pdf-path]:
+    convert the given pdf to txt
+ 8. helper pdf-2-word [pdf-path]:
+    convert the given pdf to word
+ 9. helper word-2-pdf [word-path...]|[directory-path]:
+    convert all the given word(in the directory) to pdf
+10. helper excel-2-pdf [excel-path...]|[directory-path]:
+    convert all the given excel(in the directory) to pdf
+11. helper ppt-2-pdf [ppt-path...]|[directory-path]:
+    convert all the gievn ppt(in the directory) to pdf
+12. helper dl-img [url]:
+    batch download images from https://pixabay.com/
+```
+
 ### ToDo
 - [x] [批量重命名文件](/batch_rename_file.py)
-- [ ] 批量下载百度图片 
+- [x] 批量下载图片 
 - [ ] 批量下载视频
 - [x] [PDF操作](/pdf_helper.py)
     - [x] 拼接，分割

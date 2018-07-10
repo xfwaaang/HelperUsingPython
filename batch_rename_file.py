@@ -23,7 +23,7 @@ def batch_rename_file(path):
 		file_type = os.path.splitext(file)[1]
 
 		# 新的文件名
-		new_file_name = file_name.replace(file_name, '第' + str(i) + '章')
+		new_file_name = file_name.replace(file_name, str(i))
 		i += 1
 
 		new_file = os.path.join(path, new_file_name + file_type)

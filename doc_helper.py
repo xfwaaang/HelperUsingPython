@@ -60,3 +60,41 @@ class DocHelper(object):
 		p.Quit()
 		print('save ppt as pdf ' + str(out_file))
 		pass
+
+	def convert(path, fun):
+		file_path_list = []
+		# print(path)
+		# print(path[0])
+		if os.path.isdir(path[0]):
+			# print('isdir')
+			for file in os.listdir(path[0]):
+				file_path = os.path.join(path[0], file)
+				# print(file_path)
+				if os.path.isdir(file):
+					continue
+				file_type = os.path.splitext(file_path)[1]
+				# print(file_type)
+				if not (file_type == '.doc' or file_type == '.docx' or file_type == '.ppt' or file_type == '.pptx' or file_type == '.xlsx'):
+					continue
+				file_path_list.append(file_path)
+				# print(file_path)
+		else:
+			file_path_list = path
+		print('There are ' + str(len(file_path_list)) + ' files to be converted')
+		for file_path in file_path_list:
+			# print(file_path)
+			fun(file_path)
+		pass
+
+	# def convert_all(fun, dir_path):
+	# 	file_path_list = []
+	# 	for file in os.listdir(dir_path):
+	# 		file_path = os.path.join(dir_path, file)
+	# 		if os.path.isdir(file):
+	# 			continue
+	# 		file_type = os.path.splitext(file_path)[1]
+	# 		if not file_type == '.doc' or file_type == '.docx' or file_type == '.ppt' or file_type == '.pptx' or file_type == '.xlsx':
+	# 			continue
+	# 		file_path_list.append(file_path)
+	# 	convert(fun, file_path_list)
+	# 	pass
